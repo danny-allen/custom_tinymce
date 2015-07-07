@@ -1,0 +1,70 @@
+#custom_tinymce_image_upload {
+    width: 410px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    position: absolute;
+    display: none;
+    box-shadow: 0 0 10px #333;
+    background: rgba(84, 81, 76, .98);
+}
+#custom_tinymce_image_upload.fail {
+    box-shadow: 0 0 10px #b34040;
+    background: rgba(179, 64, 64, .8);
+}
+#custom_tinymce_image_upload div {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #65635e;
+}
+#custom_tinymce_image_upload div:first-child {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+}
+#custom_tinymce_image_upload label {
+    display: inline-block;
+    width: 108px;
+    padding-left: 12px;
+}
+#custom_tinymce_image_upload input.title, #custom_tinymce_image_upload_image {
+    width: 270px;
+}
+#custom_tinymce_image_upload .buttonset {
+    padding-left: 125px;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: none;
+    background-color: #5D5A55;
+    position: relative;
+}
+#custom_tinymce_image_upload.fail .buttonset {
+    background-color: transparent;
+}
+#custom_tinymce_image_upload .buttonset a.cancel:link, #custom_tinymce_image_upload .buttonset a.cancel:visited {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+}
+#custom_tinymce_image_upload span.speak {
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    background: 0 0;
+    top: -20px;
+    right: 90px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgba(84, 81, 76, .95);
+}
+#custom_tinymce_image_upload.fail span.speak {
+    border-color: transparent transparent rgba(179, 64, 64, .7);
+}
+#custom_tinymce_image_upload img.spinner {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    display: none;
+}

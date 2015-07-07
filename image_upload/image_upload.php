@@ -8,10 +8,10 @@
 
     if (PerchUtil::count($_FILES)) {
 
-        $Tag = new PerchXMLTag('<perch:content id="miu_image_upload_image" disable-asset-panel="true" detect-type="true" />');
-        $Tag->set('input_id', 'miu_image_upload_image');
+        $Tag = new PerchXMLTag('<perch:content id="custom_tinymce_image_upload_image" disable-asset-panel="true" detect-type="true" />');
+        $Tag->set('input_id', 'custom_tinymce_image_upload_image');
 
-        $API = new PerchAPI(1.0, 'miu_image_upload');
+        $API = new PerchAPI(1.0, 'custom_tinymce_image_upload');
         
         if ($_POST['image']=='false'){
             $is_image = false;
@@ -79,8 +79,8 @@
             $assetID = $ids[0];
             $Asset = $Assets->find($assetID);
 
-            if (isset($_POST['miu_image_upload_title']) && $_POST['miu_image_upload_title']!='') {
-                $Asset->update(array('resourceTitle'=>$_POST['miu_image_upload_title']));    
+            if (isset($_POST['custom_tinymce_image_upload_title']) && $_POST['custom_tinymce_image_upload_title']!='') {
+                $Asset->update(array('resourceTitle'=>$_POST['custom_tinymce_image_upload_title']));    
             }
             
             $Asset->reindex();

@@ -1,7 +1,6 @@
 /* global Perch */
 
-
-var tinyImageUpload = function(){
+var customTinyMCE = function(){
 	'use strict';
 
 	var upload =  function(tinyTextarea, fileUpload) {
@@ -10,19 +9,24 @@ var tinyImageUpload = function(){
 		var textarea = $('#'+textareaID);
 		var buttonSelector;
 
-
+		console.log('here');
 		var output = '';
-		$('#miu_image_upload').remove();
-		$.get('/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.html', function(data){
+		$('#custom_tinymce_image_upload').remove();
+
+		var query = { rand: Math.random() };
+		$.get('/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.html', query, function(data){
+			console.log(data);
 			$('body').append(data);
-			var form =$('#miu_image_upload');
+			var form = $('#custom_tinymce_image_upload');
+
+			console.log(form);
 
 			if (fileUpload) {
 				buttonSelector = '.file-upload';
 			}else{
 				buttonSelector = '#perchimage';
 			}
-			console.log(textarea.position().top);
+
 			form.css({
 				'top': textarea.prev('.mce-tinymce').find(buttonSelector).offset().top+55,
 				'left': textarea.prev('.mce-tinymce').find(buttonSelector).offset().left-270
@@ -30,13 +34,13 @@ var tinyImageUpload = function(){
 			
 			
 			if (fileUpload) {
-				form.find('label[for=miu_image_upload_title]').text(Perch.Lang.get('File title'));
+				form.find('label[for=custom_tinymce_image_upload_title]').text(Perch.Lang.get('File title'));
 			}else{
-				form.find('label[for=miu_image_upload_title]').text(Perch.Lang.get('Image title'));
-				form.find('label[for=miu_image_upload_class]').text(Perch.Lang.get('Style'));
+				form.find('label[for=custom_tinymce_image_upload_title]').text(Perch.Lang.get('Image title'));
+				form.find('label[for=custom_tinymce_image_upload_class]').text(Perch.Lang.get('Style'));
 			}
 			
-			form.find('label[for=miu_image_upload_image]').text(Perch.Lang.get('File to upload'));
+			form.find('label[for=custom_tinymce_image_upload_image]').text(Perch.Lang.get('File to upload'));
 			form.find('input[type=submit]').attr('value', Perch.Lang.get('Upload'));
 			form.find('span.or').text(Perch.Lang.get('or'));
 			form.find('a.cancel').text(Perch.Lang.get('Cancel')).click(function(e){
@@ -54,7 +58,7 @@ var tinyImageUpload = function(){
 				if (classString) {
 					var arclasses = classString.split(',');
 					var i, l, label, value, arval;
-					var selectbox = $('#miu_image_upload_class');
+					var selectbox = $('#custom_tinymce_image_upload_class');
 					for(i=0, l=arclasses.length; i<l; i++) {
 						if (arclasses[i].indexOf('|')!==-1) {
 							arval = arclasses[i].split('|');
@@ -67,15 +71,17 @@ var tinyImageUpload = function(){
 						selectbox.append('<option value="'+value+'">'+label+'</option>');
 					}
 				}else{
-					$('#miu_image_upload_classes').remove();
+					$('#custom_tinymce_image_upload_classes').remove();
 				}
 			}else{
-				$('#miu_image_upload_classes').remove();
+				$('#custom_tinymce_image_upload_classes').remove();
 			}
+
+			console.log(form);
 			
 			
 			form.fadeIn(function(){
-				$('#miu_image_upload_image').focus();
+				$('#custom_tinymce_image_upload_image').focus();
 			});
 			
 			form.attr('action', '/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.php');
@@ -92,8 +98,8 @@ var tinyImageUpload = function(){
 					form.find('img.spinner').hide();
 					if (r!=='FAIL') {
 						form.removeClass('fail');
-						var alt = form.find('#miu_image_upload_title').val();
-						var classname = form.find('#miu_image_upload_class').val();
+						var alt = form.find('#custom_tinymce_image_upload_title').val();
+						var classname = form.find('#custom_tinymce_image_upload_class').val();
 						
 						if (fileUpload) {
 							
