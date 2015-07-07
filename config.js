@@ -2,7 +2,7 @@
 	var set_up_myeditor = function(){
 		$('textarea.custom_tinymce:not([data-init])').wrap('<div class="editor-wrap"></div>').tinymce({
 			// Location of TinyMCE script
-			script_url : '/perch/addons/plugins/editors/custom_tinymce/tinymce.min.js', 
+			script_url : '/perch/addons/plugins/editors/custom_tinymce/tinymce/tinymce.min.js', 
 			plugins: [
 				"advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
 				"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
