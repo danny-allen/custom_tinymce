@@ -131,12 +131,18 @@ var CustomTinyMCE = CustomTinyMCE || {};
 				//set the vars to build the html output
 				url = $(self.form).find('#custom_tinymce_custom_button_url').val();
 				text = $(self.form).find('#custom_tinymce_custom_button_text').val();
-				title = $(self.form).find('#custom_tinymce_custom_button_text').val();
+				title = $(self.form).find('#custom_tinymce_custom_button_title').val();
 				target = $(self.form).find('#custom_tinymce_custom_button_target').val();
 				style = $(self.form).find('#custom_tinymce_custom_button_style').val();
 
-				//set the html output based on the user input
-				html = '<a href="'+url+'" title="'+title+'" target="'+target+'" class="btn btn--'+style+'">'+text+'</a>';
+				//set the first part of the html output based on the user input
+				html = '<a href="'+url+'" ';
+
+				//title not required, so not always needed
+				html += (title !== '')? 'title="'+title+'" ' : '';
+
+				//set the rest of the output
+				html += 'target="'+target+'" class="btn btn--'+style+'">'+text+'</a>';
 
 				//remove form
 				$(self.form).fadeOut(function(){
