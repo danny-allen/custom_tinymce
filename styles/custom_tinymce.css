@@ -3,8 +3,7 @@
  * A class can be added to each form opposed to seperate ID's.
  */
 
-#custom_tinymce_image_upload,
-#custom_tinymce_custom_button {
+.custom_tinymce_form {
 	width: 410px;
 	margin: 0 auto;
 	padding: 10px;
@@ -15,37 +14,30 @@
 	box-shadow: 0 0 10px #333;
 	background: rgba(84, 81, 76, .98);
 }
-#custom_tinymce_image_upload.fail,
-#custom_tinymce_custom_button.fail {
+.custom_tinymce_form.fail {
 	box-shadow: 0 0 10px #b34040;
 	background: rgba(179, 64, 64, .8);
 }
-#custom_tinymce_image_upload div,
-#custom_tinymce_custom_button div {
+.custom_tinymce_form div {
 	margin-top: 8px;
 	padding-top: 8px;
 	border-top: 1px solid #65635e;
 }
-#custom_tinymce_image_upload div:first-child,
-#custom_tinymce_custom_button div:first-child {
+.custom_tinymce_form div:first-child {
 	margin-top: 0;
 	border-top: 0;
 	padding-top: 0;
 }
-#custom_tinymce_image_upload label,
-#custom_tinymce_custom_button label {
+.custom_tinymce_form label {
 	display: inline-block;
 	width: 108px;
 	padding-left: 12px;
 }
-#custom_tinymce_image_upload input.title,
-#custom_tinymce_image_upload_image,
-#custom_tinymce_custom_button input.title,
-#custom_tinymce_custom_button_image {
+.custom_tinymce_form input.title,
+.custom_tinymce_form input.image_upload {
 	width: 270px;
 }
-#custom_tinymce_image_upload .buttonset,
-#custom_tinymce_custom_button .buttonset {
+.custom_tinymce_form .buttonset {
 	padding-left: 125px;
 	margin-top: 8px;
 	padding-bottom: 8px;
@@ -53,20 +45,16 @@
 	background-color: #5D5A55;
 	position: relative;
 }
-#custom_tinymce_image_upload.fail .buttonset,
-#custom_tinymce_custom_button.fail .buttonset {
+.custom_tinymce_form.fail .buttonset {
 	background-color: transparent;
 }
-#custom_tinymce_image_upload .buttonset a.cancel:link,
-#custom_tinymce_image_upload .buttonset a.cancel:visited,
-#custom_tinymce_custom_button .buttonset a.cancel:link,
-#custom_tinymce_custom_button .buttonset a.cancel:visited {
+.custom_tinymce_form .buttonset a.cancel:link,
+.custom_tinymce_form .buttonset a.cancel:visited {
 	border-bottom: 1px solid #fff;
 	color: #fff;
 	text-decoration: none;
 }
-#custom_tinymce_image_upload span.speak,
-#custom_tinymce_custom_button span.speak {
+.custom_tinymce_form span.speak {
 	display: block;
 	width: 0;
 	height: 0;
@@ -78,20 +66,16 @@
 	border-style: solid;
 	border-color: transparent transparent rgba(84, 81, 76, .95);
 }
-#custom_tinymce_image_upload.fail span.speak,
-#custom_tinymce_custom_button.fail span.speak {
+.custom_tinymce_form.fail span.speak {
 	border-color: transparent transparent rgba(179, 64, 64, .7);
 }
-#custom_tinymce_image_upload img.spinner,
-#custom_tinymce_custom_button img.spinner {
+.custom_tinymce_form img.spinner {
 	position: absolute;
 	top: 10px;
 	left: 100px;
 	display: none;
 }
-
-#custom_tinymce_image_upload p.help,
-#custom_tinymce_custom_button p.help {
+.custom_tinymce_form p.help {
 	padding-left: 12px;
 	font-style: italic;
 	font-size: 11px;
