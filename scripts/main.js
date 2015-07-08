@@ -19,6 +19,7 @@ var CustomTinyMCE = CustomTinyMCE || {};
 				text: 'Perch Image',
 				icon: false,
 				id: 'perchimage',
+				tooltip: 'Perch image',
 				onclick: function() {
 					upload.init(editor);
 				}
@@ -29,6 +30,7 @@ var CustomTinyMCE = CustomTinyMCE || {};
 				text: 'Custom Button',
 				icon: false,
 				id: 'custombutton',
+				tooltip: 'Custom button',
 				onclick: function() {
 					button.init(editor);
 				}

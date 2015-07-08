@@ -12,30 +12,46 @@ var CustomTinyMCE = CustomTinyMCE || {};
 	 * Sets the textarea options.
 	 */
 	CustomTinyMCE.textarea = function(userOptions){
-		
-		//reference to this
-		var self = this;
 
 		this.options = {
-			// Location of TinyMCE script
-			script_url : '/perch/addons/plugins/editors/custom_tinymce/tinymce/tinymce.min.js', 
+			script_url : '/perch/addons/plugins/editors/custom_tinymce/tinymce/tinymce.min.js',
+			content_css : '/perch/addons/plugins/editors/custom_tinymce/styles/custom_tinymce_textarea.css',
 			plugins: [
-				"advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-				"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-				"save table contextmenu directionality emoticons template paste textcolor"
+				'autolink link image lists hr anchor code media',
 			],
-			menu : { // this is the complete default configuration
-				file   : {},
-				edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-				insert : {title : 'Insert', items : 'link media'},
-				view   : {},
-				format : {},
-				table  : {},
-				tools  : {title : 'Tools' , items : 'code'}
+			menu : {
+				//remove menu
 			},
-			toolbar: "styleselect | bold italic | link image | perchimage | custombutton",
+			toolbar: 'styleselect | bold italic | hr blockquote link  image | custombutton perchimage | code',
 			convert_urls: false,
 			relative_urls: false,
+			style_formats: [
+				{title: 'Headers', items: [
+					{title: 'Header 1', format: 'h1'},
+					{title: 'Header 2', format: 'h2'},
+					{title: 'Header 3', format: 'h3'},
+					{title: 'Header 4', format: 'h4'},
+					{title: 'Header 5', format: 'h5'},
+					{title: 'Header 6', format: 'h6'}
+				]},
+				{title: 'Inline', items: [
+					{title: 'Bold', icon: 'bold', format: 'bold'},
+					{title: 'Italic', icon: 'italic', format: 'italic'},
+					{title: 'Underline', icon: 'underline', format: 'underline'},
+					{title: 'Strikethrough', icon: 'strikethrough', format: 'strikethrough'},
+					{title: 'Superscript', icon: 'superscript', format: 'superscript'},
+					{title: 'Subscript', icon: 'subscript', format: 'subscript'},
+				]},
+				{title: 'Blocks', items: [
+					{title: 'Blockquote', format: 'blockquote'},
+				]},
+				{title: 'Alignment', items: [
+					{title: 'Left', icon: 'alignleft', format: 'alignleft'},
+					{title: 'Center', icon: 'aligncenter', format: 'aligncenter'},
+					{title: 'Right', icon: 'alignright', format: 'alignright'},
+					{title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
+				]}
+			]
 		};
 
 		// Merge user_options into this.options
