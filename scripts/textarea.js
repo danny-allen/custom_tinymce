@@ -17,8 +17,9 @@ var CustomTinyMCE = CustomTinyMCE || {};
 			script_url : '/perch/addons/plugins/editors/custom_tinymce/tinymce/tinymce.min.js',
 			content_css : '/perch/addons/plugins/editors/custom_tinymce/styles/custom_tinymce_textarea.css',
 			plugins: [
-				'autolink link image lists hr anchor code media',
+				'autolink link image lists hr anchor code media paste',
 			],
+    			paste_as_text: true,
 			menu : {
 				//remove menu
 			},
