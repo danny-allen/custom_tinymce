@@ -1,37 +1,55 @@
 /* global Perch */
 
-var customTinyMCE = function(){
+var CustomTinyMCE = CustomTinyMCE || {};
+
+(function($, window, document, undefined) {
+
 	'use strict';
 
-	var upload =  function(tinyTextarea, fileUpload) {
+	/**
+	 * textarea
+	 *
+	 * Sets the textarea options.
+	 */
+	CustomTinyMCE.upload = function(){
 
-		var textareaID = tinyTextarea.id;
+	};
+
+
+	CustomTinyMCE.upload.prototype.init = function(tinyMCETextarea, fileUpload){
+
+		//set vars
+		var textareaID = tinyMCETextarea.id;
 		var textarea = $('#'+textareaID);
 		var buttonSelector;
-
-		console.log('here');
 		var output = '';
+
 		$('#custom_tinymce_image_upload').remove();
 
+		//stop the query from caching
 		var query = { rand: Math.random() };
+
+		//get the image upload form
 		$.get('/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.html', query, function(data){
-			console.log(data);
+
+			//append the form to the body
 			$('body').append(data);
+
+			//set form as we know it
 			var form = $('#custom_tinymce_image_upload');
 
-			console.log(form);
-
+			//detect the type of upload
 			if (fileUpload) {
 				buttonSelector = '.file-upload';
 			}else{
 				buttonSelector = '#perchimage';
 			}
 
+			//position form relative to button
 			form.css({
 				'top': textarea.prev('.mce-tinymce').find(buttonSelector).offset().top+55,
 				'left': textarea.prev('.mce-tinymce').find(buttonSelector).offset().left-270
 			});
-			
 			
 			if (fileUpload) {
 				form.find('label[for=custom_tinymce_image_upload_title]').text(Perch.Lang.get('File title'));
@@ -50,7 +68,8 @@ var customTinyMCE = function(){
 				});
 			});
 			
-			form.find('img.spinner').attr('src', '/perch/addons/plugins/editors/custom_tinymce/image_upload/loader.gif');
+			//set spinner
+			form.find('img.spinner').attr('src', '/perch/addons/plugins/editors/custom_tinymce/images/loader.gif');
 			
 			// class options
 			if (!fileUpload) {
@@ -76,38 +95,37 @@ var customTinyMCE = function(){
 			}else{
 				$('#custom_tinymce_image_upload_classes').remove();
 			}
-
-			console.log(form);
 			
-			
+			//show form
 			form.fadeIn(function(){
 				$('#custom_tinymce_image_upload_image').focus();
 			});
 			
+			//set form action to the image upload script
 			form.attr('action', '/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.php');
-			
 
-
-			
+			//ajax form
 			form.ajaxForm({
 				beforeSubmit: function(){
 					form.find('img.spinner').show();
 				},
-				success: function(r) { 
+				success: function(result) { 
 
 					form.find('img.spinner').hide();
-					if (r!=='FAIL') {
+					if (result!=='FAIL') {
+						//remove fail class from form, we've got a result
 						form.removeClass('fail');
 						var alt = form.find('#custom_tinymce_image_upload_title').val();
 						var classname = form.find('#custom_tinymce_image_upload_class').val();
 						
+						//build HTML
 						if (fileUpload) {
 							
-							var sText = r;
+							var sText = result;
 							if (alt){
 								sText = alt;
 							}
-							output = '<a href="'+r+'">'+sText+'</a>';
+							output = '<a href="'+result+'">'+sText+'</a>';
 						}else{
 							var sAlt = 'alt=""';
 							var sClass = '';
@@ -117,19 +135,20 @@ var customTinyMCE = function(){
 							if (classname){
 								sClass = ' class="'+classname+'"';
 							}
-							output = '<img src="'+r+'"'+sAlt+sClass+' />';
+							output = '<img src="'+result+'"'+sAlt+sClass+' />';
 						}
 
-						console.log(output);
-
+						//remove form
 						form.fadeOut(function(){
 							form.remove();
 						});
 
-						tinyTextarea.insertContent(output);
+						//insert content to TinyMCE
+						tinyMCETextarea.insertContent(output);
 						return;
 
 					}else{
+						//set fail class to the form.
 						form.addClass('fail');
 					}
 				},
@@ -148,13 +167,7 @@ var customTinyMCE = function(){
 			
 		});	
 
-
 		return true;
 	};
 
-
-	return {
-		upload: upload
-	};
-
-}();
+})(jQuery, window, document);
