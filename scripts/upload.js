@@ -7,12 +7,10 @@ var CustomTinyMCE = CustomTinyMCE || {};
 	'use strict';
 
 	/**
-	 * textarea
-	 *
-	 * Sets the textarea options.
+	 * upload
 	 */
 	CustomTinyMCE.upload = function(){
-
+		//could set some options here
 	};
 
 
@@ -30,7 +28,7 @@ var CustomTinyMCE = CustomTinyMCE || {};
 		var query = { rand: Math.random() };
 
 		//get the image upload form
-		$.get('/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.html', query, function(data){
+		$.get('/perch/addons/plugins/editors/custom_tinymce/templates/upload.html', query, function(data){
 
 			//append the form to the body
 			$('body').append(data);
@@ -102,7 +100,7 @@ var CustomTinyMCE = CustomTinyMCE || {};
 			});
 			
 			//set form action to the image upload script
-			form.attr('action', '/perch/addons/plugins/editors/custom_tinymce/image_upload/image_upload.php');
+			form.attr('action', '/perch/addons/plugins/editors/custom_tinymce/inc/upload.php');
 
 			//ajax form
 			form.ajaxForm({

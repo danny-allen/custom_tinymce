@@ -33,7 +33,7 @@ var CustomTinyMCE = CustomTinyMCE || {};
 				table  : {},
 				tools  : {title : 'Tools' , items : 'code'}
 			},
-			toolbar: "styleselect | bold italic | link image | perchimage",
+			toolbar: "styleselect | bold italic | link image | perchimage | custombutton",
 			convert_urls: false,
 			relative_urls: false,
 		};

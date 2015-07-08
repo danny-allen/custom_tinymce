@@ -1,0 +1,35 @@
+<form id="custom_tinymce_custom_button" method="post" enctype="multipart/form-data" action="#">
+	<div>
+		<label for="custom_tinymce_custom_button_url">Button URL</label>
+		<input type="text" id="custom_tinymce_custom_button_url" name="custom_tinymce_custom_button_url" required="true" class="title" />
+	</div>
+	<div>
+		<label for="custom_tinymce_custom_button_text">Button Text</label>
+		<input type="text" id="custom_tinymce_custom_button_text" name="custom_tinymce_custom_button_text" class="title" />
+	</div>
+	<div>
+		<label for="custom_tinymce_custom_button_title">Button Title</label>
+		<input type="text" id="custom_tinymce_custom_button_title" name="custom_tinymce_custom_button_title" class="title" />
+	</div>
+	<div id="custom_tinymce_custom_button_target_container">
+		<label for="custom_tinymce_custom_button_target">Target</label>
+		<select id="custom_tinymce_custom_button_target" name="custom_tinymce_custom_button_target">
+			<option value="_self">Self (default)</option>
+			<option value="_blank">New tab/window</option>
+		</select>
+	</div>
+	<div id="custom_tinymce_custom_button_style_container">
+		<label for="custom_tinymce_custom_button_style">Style</label>
+		<select id="custom_tinymce_custom_button_style" name="custom_tinymce_custom_button_style">
+			<option value="primary">Primary</option>
+			<option value="secondary">Secondary</option>
+			<option value="tertiary">Tertiary</option>
+		</select>
+		<p class="help">This setting relies on styles included with your theme.</p>
+	</div>
+	<div class="buttonset">
+		<input type="submit" value="Enter" />
+		<span class="or">or</span> <a href="#" class="cancel">Cancel</a>
+	</div>
+	<span class="speak"></span>
+</form>

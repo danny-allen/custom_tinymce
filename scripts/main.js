@@ -7,11 +7,14 @@ var CustomTinyMCE = CustomTinyMCE || {};
     //instantiate the upload plugin for TinyMCE
 	var upload = new CustomTinyMCE.upload();
 
+    //instantiate the upload plugin for TinyMCE
+	var button = new CustomTinyMCE.button();
+
 	//these are the same options that TinyMCE expects - we're just overwriting the defaults set in our module
-    var customOptions = {
+    var textareaOptions = {
 		setup: function(editor) {
 
-			//add perch image button
+			//Perch Image - Button
 			editor.addButton('perchimage', {
 				text: 'Perch Image',
 				icon: false,
@@ -20,11 +23,21 @@ var CustomTinyMCE = CustomTinyMCE || {};
 					upload.init(editor);
 				}
 			});
+
+			//Custom Button - ...Button
+			editor.addButton('custombutton', {
+				text: 'Custom Button',
+				icon: false,
+				id: 'custombutton',
+				onclick: function() {
+					button.init(editor);
+				}
+			});
 		},
     };
 
     //instantiate the textarea passing it our options
-	var textarea = new CustomTinyMCE.textarea(customOptions);
+	var textarea = new CustomTinyMCE.textarea(textareaOptions);
 
 	//initialise the textarea
 	textarea.init();
