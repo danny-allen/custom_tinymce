@@ -15,15 +15,15 @@ var CustomTinyMCE = CustomTinyMCE || {};
 
 		this.options = {
 			script_url : '/perch/addons/plugins/editors/custom_tinymce/tinymce/tinymce.min.js',
-			content_css : '/perch/addons/plugins/editors/custom_tinymce/styles/custom_tinymce_textarea.css',
+			content_css : '/styles/main.css',
 			plugins: [
-				'autolink link image lists hr anchor code media paste',
+				'autolink link image lists hr anchor code media paste lists',
 			],
-    			paste_as_text: true,
+			paste_as_text: true,
 			menu : {
 				//remove menu
 			},
-			toolbar: 'styleselect | bold italic | hr blockquote link  image | custombutton perchimage | code',
+			toolbar: 'styleselect | bold italic | bullist numlist hr blockquote link  image | custombutton perchimage | code ',
 			convert_urls: false,
 			relative_urls: false,
 			style_formats: [
